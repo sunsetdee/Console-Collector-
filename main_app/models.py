@@ -12,6 +12,7 @@ def __str__(self):
     return self.name
 
 def get_absolute_url(self):
+        # the below 'console_id' is referring to urls.py detail path
     return reverse('detail', kwargs={'console_id': self.id})
 
 

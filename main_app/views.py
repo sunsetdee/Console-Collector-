@@ -31,7 +31,7 @@ class ConsoleCreate(CreateView):
 
 class ConsoleUpdate(UpdateView):
   model = Console
-  # Let's disallow the renaming of a cat by excluding the name field!
+  # Let's disallow the renaming of a console by excluding the make field!
   fields = ['consolemodel', 'price', 'released_year']
 
 class ConsoleDelete(DeleteView):
