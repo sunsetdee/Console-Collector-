@@ -15,11 +15,12 @@
     <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;ConsoleCollector</a></li>
+          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;ConsoleCollector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/consoles">View All My Consoles</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'consoles_create' %}">Add a Console</a></li>
+          <li><a href="{% url 'index' %}">View All My Consoles</a></li>
         </ul>
       </div>
     </nav>

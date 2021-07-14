@@ -1,17 +1,17 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
-class Console():
-    def __init__(self, make, model, released_year, price):
-        self.make = make
-        self.model = model
-        self.released_year = released_year
-        self.price = price
+class Console(models.Model):
+    make = models.CharField(max_length=100)
+    consolemodel = models.CharField(max_length=100)
+    price = models.IntegerField()
+    released_year = models.IntegerField()
 
-consoles = [
-    Console('Microsoft', 'Xbox Serie X', 2020, '$499'),
-    Console('Microsoft', 'Xbox One', 2013, '$499'),
-    Console('Sony', 'PlayStation 5', 2020, '$499'),
-    Console('Sony', 'PlayStation 4', 2013, '$399'),
-    Console('Nintendo', 'Switch', 2017, '$299'),
-]
+def __str__(self):
+    return self.name
+
+def get_absolute_url(self):
+    return reverse('detail', kwargs={'console_id': self.id})
+
+

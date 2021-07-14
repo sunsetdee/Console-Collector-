@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Console Details</h1>
+
+<div class="card">
+  <div class="card-content">
+      <!-- console is coming from views.py console_detail return render 'console:' -->
+    <span class="card-title">{{ console.make }}</span>
+    <p>Model: {{ console.consolemodel }}</p>
+    <p>Price: {{ console.price }}</p>
+    <p>Release Year: {{ console.released_year }}</p>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'consoles_update' console.id %}">Edit</a>
+    <a href="{% url 'consoles_delete' console.id %}">Delete</a>
+  </div>
+</div>
+
+
+{% endblock %}

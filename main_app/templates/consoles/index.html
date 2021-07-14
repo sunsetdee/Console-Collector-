@@ -3,19 +3,17 @@
 
 <h1>Console List</h1>
 
+<!-- the consoles in the for loop is referring to view.py console_index function -->
 {% for console in consoles %}
   <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ console.make }}</span>
-      <p>Model: {{ console.model }}</p>
-      <p>Release Year: {{ console.released_year }}</p>
-      <p>Price: {{ console.price }} </p>
-      <!-- {% if cat.age > 0 %}
-        <p>Age: {{ cat.age }}</p>
-      {% else %}
-        <p>Age: Kitten</p> -->
-      <!-- {% endif %} -->
-    </div>
+    <a href="{% url 'detail' console.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ console.make }}</span>
+        <p>Model: {{ console.consolemodel }}</p>
+        <p>Release Year: {{ console.released_year }}</p>
+        <p>Price: {{ console.price }} </p>
+      </div>
+    </a>   
   </div>
 {% endfor %}
 
