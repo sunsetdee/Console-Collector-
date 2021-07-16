@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- below keyword object is passed in/given to us. it holds the same data as console. both object or console will both work -->
+<!-- code below means if there's an object/console in it, in this case if we are editing/updating, then show the console, 
+if we are adding a console, then there's no object so it wouldn't show the object -->
+<!-- reason why both EDIT and ADD both are rendering this page is because by default, both those views will look inside
+this folder/same folder to render -->
 {% if object %}
-    <h1>Edit <span class="teal-text">{{ 'console' }}</span></h1>
+    <h1>Edit <span class="teal-text">{{ console.consolemodel }}</span></h1>
 {% else %}
     <h1>Add Console</h1>
  {% endif %}
