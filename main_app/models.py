@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 
 class Game(models.Model):
-    # name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     developer = models.CharField(max_length=100)
     publisher = models.CharField(max_length=100)
     platforms = models.CharField(max_length=200)
@@ -23,7 +23,8 @@ class Console(models.Model):
     consolemodel = models.CharField(max_length=100)
     price = models.IntegerField()
     released_year = models.IntegerField()
-    game = models.ManyToManyField(Game)
+    # the below games need to match the views.py console_detail games
+    games = models.ManyToManyField(Game)
 
     def __str__(self):
         return self.consolemodel

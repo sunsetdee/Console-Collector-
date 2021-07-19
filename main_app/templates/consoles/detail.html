@@ -40,6 +40,50 @@
       </tbody>
     </table>
   </div>
+  <hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ console.consolemodel }}'s Games</h3>
+    {% if console.games.count %}
+      {% for game in console.games.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              A <span>{{ game }}</span> {{ game }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No Games :(</h5>
+    {% endif %}
+  </div>
+
+  <div class="col s6">
+    <h3>Available Games</h3>
+    {% if games.count %}
+      {% for game in games.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span>{{ game.name }}</span> 
+            </span>
+          </div>
+          <div class="card-action">
+            <!-- below we need to put the console.id first and game.id second. we need
+            to put them in order because in our url.py, the path for assoc game
+          we put console_id first then game_id so we havf to follow that order -->
+            <form action="{% url 'assoc_game' console.id game.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add Game</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{console.consolemodel}} Already Has All Games Available</h5>
+    {% endif %}
+  </div>
 </div>
 
 {% endblock %}

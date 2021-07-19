@@ -21,16 +21,18 @@ def consoles_index(request):
 
 def consoles_detail(request, console_id):
     console = Console.objects.get(id=console_id)
+    games_console_doesnt_have = Game.objects.exclude(id__in = console.games.all().values_list('id'))
+
     # instantiate FeedForm to be rendered in the template
     accessory_form = AccessoryForm()
     # below the left side 'console' is passing to detail.html to render the data
     return render(request, 'consoles/detail.html', { 'console': console,
-        'accessory_form': accessory_form })
+        'accessory_form': accessory_form, 'games': games_console_doesnt_have })
 
 class ConsoleCreate(CreateView):
     model = Console
     # the codes below field = '__all__'' is = to this   fields = ['make', 'consolemodel', 'price', 'released_year']
-    fields = '__all__'
+    fields = ['make', 'consolemodel', 'price', 'released_year']
     # codes below redirct to /consoles after adding a new console
     success_url = '/consoles/'
 
@@ -79,4 +81,8 @@ class GameUpdate(UpdateView):
 class GameDelete(DeleteView):
     model = Game
     success_url = '/games/'
+
+def assoc_game(request, console_id, game_id):
+    Console.objects.get(id=console_id).games.add(game_id)
+    return redirect('detail', console_id=console_id)
     
